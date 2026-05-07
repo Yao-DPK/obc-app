@@ -3,9 +3,21 @@ import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
+import { trpcClient } from './trpc/client'
 
 function App() {
   const [count, setCount] = useState(0)
+
+  function test(){
+    try {
+        const result =  trpcClient.document.greet.query({"name": "Alice"});
+        console.log(result);
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+
 
   return (
     <>
@@ -27,6 +39,14 @@ function App() {
           onClick={() => setCount((count) => count + 1)}
         >
           Count is {count}
+        </button>
+
+        <button
+          type="button"
+          className="counter"
+          onClick={() => test()}
+        >
+          Click me to Test
         </button>
       </section>
 

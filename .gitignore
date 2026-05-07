@@ -86,3 +86,6 @@ yarn.lock
 # Fichiers de sauvegarde
 *.bak
 *.orig
+
+# Workspaces Locaux
+workspaces
