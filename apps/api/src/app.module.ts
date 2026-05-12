@@ -1,23 +1,25 @@
+import { TRPCModule } from 'nestjs-trpc-v2';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { AuthModule } from './auth/auth.module';
-import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
-import { AuditMiddleware } from './common/middleware/audit.middleware';
-import { GoogleDriveModule } from './google-drive/google-drive.module';
+import { AuthModule } from './modules/auth/auth.module';
+import { GoogleDriveModule } from './modules/google-drive/google-drive.module';
 import { ConfigModule } from '@nestjs/config';
-import { GoogleAuthModule } from './google-auth/google-auth.module';
-import { DocumentModule } from './document/document.module';
-import { TRPCModule } from 'nestjs-trpc-v2';
-import { UserModule } from './user/user.module';
-import { GuardianModule } from './guardian/guardian.module';
-import { PaymentModule } from './payment/payment.module';
+import { GoogleAuthModule } from './modules/google-auth/google-auth.module';
+import { DocumentModule } from './modules/document/document.module';
+import { UserModule } from './modules/user/user.module';
+import { InscriptionModule } from './modules/inscription/inscription.module';
+import { PaymentModule } from './modules/payment/payment.module';
+import { GuardianModule } from './modules/guardian/guardian.module';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
+import { AuditMiddleware } from './modules/common/middleware/audit.middleware';
+
 
 
 @Module({
   imports: [
     TRPCModule.forRoot({
-      autoSchemaFile: '../../packages/trpc/src/server',
-    }), AuthModule, GoogleDriveModule, ConfigModule.forRoot({ isGlobal: true }), GoogleAuthModule, DocumentModule, UserModule, GuardianModule, PaymentModule],
+      autoSchemaFile: 'src/trpc',
+    }), AuthModule, GoogleDriveModule, ConfigModule.forRoot({ isGlobal: true }), GoogleAuthModule, DocumentModule, UserModule, GuardianModule, PaymentModule, InscriptionModule],
   controllers: [AppController],
   providers: [AppService],
 })

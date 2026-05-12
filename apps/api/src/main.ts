@@ -5,9 +5,6 @@ import {
 } from '@nestjs/platform-fastify';
 import multipart from '@fastify/multipart';
 import { AppModule } from './app.module';
-import { fastifyTRPCPlugin } from '@trpc/server/adapters/fastify';
-import { TrpcRouter } from './trpc/trpc.router';
-import { createContext } from './trpc/context';
 
 
 async function bootstrap() {
