@@ -1,14 +1,10 @@
 // apps/api/src/modules/documents/documents.router.ts
 import { Router, Query, Mutation, Input } from 'nestjs-trpc-v2';
 import { z } from 'zod';
-import { TRPCError } from '@trpc/server';
 import { DocumentService } from './document.service';
-import { CreateDocumentSchema, DocumentSchema } from './document.schema';
-import { documents } from '../../database/schema';
-import { db, eq } from '../../database/config/db.config';
+import { CreateDocumentSchema, DocumentSchema, FindByUserSchema } from './document.dto';
 
 
-const FindByUserSchema = z.object({ userId: z.number() });
 
 @Router({ alias: 'document' })
 export class DocumentRouter {
@@ -29,7 +25,7 @@ export class DocumentRouter {
     output: z.array(DocumentSchema)
    })
   async findByUser(@Input() input: z.infer<typeof FindByUserSchema>) {
-    return db.select().from(documents).where(eq(documents.userId, input.userId));
+    return this.documentsService.findByUser(input.userId);
   }
 
 }

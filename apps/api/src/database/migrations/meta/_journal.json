@@ -29,6 +29,13 @@
       "when": 1778358389739,
       "tag": "0003_equal_colossus",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1778810320659,
+      "tag": "0004_early_turbo",
+      "breakpoints": true
     }
   ]
 }

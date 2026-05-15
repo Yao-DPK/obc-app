@@ -15,7 +15,8 @@ export const CreateDocumentSchema = DocumentSchema.omit({
   createdAt: true,  
 });
   
+export const FindByUserSchema = z.object({ userId: z.number() });
 
-
+export type FindByUserDto = z.infer<typeof FindByUserSchema>
 export type Document = z.infer<typeof DocumentSchema>
 export type CreateDocumentDto = z.infer<typeof CreateDocumentSchema>;

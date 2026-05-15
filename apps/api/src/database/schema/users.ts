@@ -4,7 +4,7 @@ export const users = pgTable('users', {
   id: serial('id').primaryKey(),
   email: varchar('email', { length: 255 }).unique().notNull(),
   passwordHash: text('password_hash').notNull(),
-  role: varchar('role', { length: 50 }).$type<'parent' | 'player' | 'admin'>().default('parent').notNull(),
+  role: varchar('role', { length: 50 }).$type<'parent' | 'player' | 'admin' | 'super_admin'>().default('parent').notNull(),
 
   // Nouveaux champs pour les informations personnelles
   firstName: varchar('first_name', { length: 100 }),
@@ -30,6 +30,13 @@ export const users = pgTable('users', {
     push?: boolean;
   }>().default({ email: true, sms: false, push: true }),
 
+  attestationData: jsonb('attestation_data').$type<{
+    signatoryType: 'self' | 'guardian';
+    selectedGuardianIndex?: number;
+    signatoryFullName: string;
+    acceptedTerms: boolean;
+    signatureUrl: string;
+  }>(),
 
   createdAt: timestamp('created_at').defaultNow().notNull(),
   updatedAt: timestamp('updated_at').defaultNow().notNull(),

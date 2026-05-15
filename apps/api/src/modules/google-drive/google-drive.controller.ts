@@ -1,12 +1,15 @@
 import { Controller, Post, Req } from '@nestjs/common';
 import type { FastifyRequest } from 'fastify';
 import { GoogleDriveService } from '../google-drive/google-drive.service';
+import { Public } from '../common/decorators/public.decorator';
+
 
 @Controller('upload')
 export class GoogleDriveController {
   constructor(private readonly googleDriveService: GoogleDriveService) {}
 
-  @Post('file')
+  //@Public()
+  @Post('file') 
   async uploadFile(@Req() req: FastifyRequest) {
     const file = await req.file();               // récupère le fichier multipart
     if (!file) {

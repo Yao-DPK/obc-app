@@ -27,4 +27,5 @@ export class UserService {
     await db.update(users).set({ passwordHash: newHash }).where(eq(users.id, userId));
     return { success: true };
   }
+  
 }

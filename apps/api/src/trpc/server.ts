@@ -5,6 +5,21 @@ const t = initTRPC.create();
 const publicProcedure = t.procedure;
 
 const appRouter = t.router({
+  user: t.router({
+    getProfile: publicProcedure.input(z.object({ userId: z.number() })).query(async () => "PLACEHOLDER_DO_NOT_REMOVE" as any),
+    updateProfile: publicProcedure.input(z.object({
+      email: z.string().email().optional(),
+      notificationPreferences: z.object({
+        email: z.boolean().optional(),
+        sms: z.boolean().optional(),
+        push: z.boolean().optional(),
+      }).optional(),
+    })).mutation(async () => "PLACEHOLDER_DO_NOT_REMOVE" as any),
+    changePassword: publicProcedure.input(z.object({
+      oldPassword: z.string().min(6),
+      newPassword: z.string().min(6),
+    })).mutation(async () => "PLACEHOLDER_DO_NOT_REMOVE" as any)
+  }),
   document: t.router({
     create: publicProcedure.input(z.object({
       id: z.string(),
@@ -36,21 +51,6 @@ const appRouter = t.router({
       createdAt: z.string(),
     }))).query(async () => "PLACEHOLDER_DO_NOT_REMOVE" as any)
   }),
-  user: t.router({
-    getProfile: publicProcedure.input(z.object({ userId: z.number() })).query(async () => "PLACEHOLDER_DO_NOT_REMOVE" as any),
-    updateProfile: publicProcedure.input(z.object({
-      email: z.string().email().optional(),
-      notificationPreferences: z.object({
-        email: z.boolean().optional(),
-        sms: z.boolean().optional(),
-        push: z.boolean().optional(),
-      }).optional(),
-    })).mutation(async () => "PLACEHOLDER_DO_NOT_REMOVE" as any),
-    changePassword: publicProcedure.input(z.object({
-      oldPassword: z.string().min(6),
-      newPassword: z.string().min(6),
-    })).mutation(async () => "PLACEHOLDER_DO_NOT_REMOVE" as any)
-  }),
   guardian: t.router({
     linkPlayer: publicProcedure.input(z.object({
       guardianId: z.number(),
@@ -77,36 +77,6 @@ const appRouter = t.router({
       declarationId: z.number(),
       status: z.enum(['verified', 'rejected']),
       adminId: z.number().optional(), // on peut le passer explicitement
-    })).mutation(async () => "PLACEHOLDER_DO_NOT_REMOVE" as any)
-  }),
-  inscription: t.router({
-    preRegister: publicProcedure.input(z.object({
-      // Infos du compte
-      email: z.email(),
-      password: z.string().min(6),
-
-      // Infos personnelles du joueur
-      firstName: z.string().min(1),
-      lastName: z.string().min(1),
-      birthDate: z.string(),
-      gender: z.enum(['M', 'F']),
-      phone: z.string().optional(),
-      address: z.string().optional(),
-      school: z.string().optional(),
-      class: z.string().optional(),
-
-      // Mode autonome ou avec garant
-      selfManaged: z.boolean().default(false),
-      emergencyContactName: z.string().optional(),
-      emergencyContactPhone: z.string().optional(),
-
-      // Liste des garants (si non autonome)
-      guardians: z.array(z.object({
-        email: z.email(),
-        firstName: z.string().min(1),
-        lastName: z.string().min(1),
-        phone: z.string().optional(),
-      })).default([]).optional(),
     })).mutation(async () => "PLACEHOLDER_DO_NOT_REMOVE" as any)
   })
 });

@@ -12,14 +12,15 @@ import { PaymentModule } from './modules/payment/payment.module';
 import { GuardianModule } from './modules/guardian/guardian.module';
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { AuditMiddleware } from './modules/common/middleware/audit.middleware';
+import { GuardianController } from './modules/guardian/guardian.controller';
 
 
 
 @Module({
   imports: [
-    TRPCModule.forRoot({
+    /* TRPCModule.forRoot({
       autoSchemaFile: 'src/trpc',
-    }), AuthModule, GoogleDriveModule, ConfigModule.forRoot({ isGlobal: true }), GoogleAuthModule, DocumentModule, UserModule, GuardianModule, PaymentModule, InscriptionModule],
+    }), */ AuthModule, GoogleDriveModule, ConfigModule.forRoot({ isGlobal: true }), GoogleAuthModule, DocumentModule, UserModule, GuardianModule, PaymentModule, InscriptionModule],
   controllers: [AppController],
   providers: [AppService],
 })

@@ -2,6 +2,7 @@ import { Controller, Get, Query, Res, HttpStatus } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { OAuth2Client } from 'google-auth-library';
 import type { FastifyReply } from 'fastify';
+import { Public } from '../common/decorators/public.decorator';
 
 @Controller('google')
 export class GoogleAuthController {
@@ -15,6 +16,7 @@ export class GoogleAuthController {
     );
   }
 
+  //@Public()
   @Get('redirect')
   async oauth2callback(@Query('code') code: string, @Res() res: FastifyReply) {
     console.log(`📥 Callback route atteinte avec le code : ${code}`);
