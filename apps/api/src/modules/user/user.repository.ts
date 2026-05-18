@@ -1,7 +1,7 @@
 // apps/api/src/modules/user/user.repository.ts
 import { Injectable } from '@nestjs/common';
-import { db, users, eq, and } from '@database/config/db.config';
-import { UserInsert, UserSelect } from '@database/config/db.config';
+import { db, users, eq, and } from 'src/database/config/db.config';
+import { UserInsert, UserSelect } from 'src/database/config/db.config';
 
 @Injectable()
 export class UserRepository {

@@ -1,6 +1,6 @@
 import { Controller, Post, Body, Get, Param, HttpCode, HttpStatus } from '@nestjs/common';
 import { DocumentService } from './document.service';
-import { db, documents, eq } from '@database/config/db.config';
+import { db, documents, eq } from 'src/database/config/db.config';
 import { z } from 'zod';
 import { Public } from '../common/decorators/public.decorator';
 import { CreateDocumentSchema } from './document.dto';
