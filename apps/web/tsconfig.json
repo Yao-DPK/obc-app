@@ -1,15 +1,19 @@
-{ 
-  "files": [],
-  "extends": "../../packages/tsconfig/base.json",
+{
   "compilerOptions": {
     "outDir": "./dist",
     "rootDir": "./src",
     "emitDecoratorMetadata": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "types": ["node"],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
+  "files": [],
+  "extends": "../../packages/tsconfig/base.json",
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
   ]
-
 }

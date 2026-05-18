@@ -6,9 +6,6 @@ import TrpcProvider from './providers/TrpcProvider.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <TrpcProvider>
       <App />
-    </TrpcProvider>
-    
   </StrictMode>,
 )
