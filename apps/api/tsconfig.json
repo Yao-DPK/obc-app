@@ -22,7 +22,7 @@
     "strictBindCallApply": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "@obc-app/database": ["../database/src/index.ts"]
+      "@database/*": ["./src/database/*"]
     }
   }
 }

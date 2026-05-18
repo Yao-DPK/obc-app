@@ -1,6 +1,6 @@
 // document.repository.ts
 import { db } from '../../database/config/db.config';
-import { documents } from '../../database/schema';
+import { documents } from '@database/schema';
 import { eq, and } from 'drizzle-orm';
 
 export type CreateDocumentInput = {

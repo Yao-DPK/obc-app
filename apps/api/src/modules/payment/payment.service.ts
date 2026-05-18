@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { db, payments, eq } from '../../database/config/db.config';
+import { db, payments, eq } from '@database/config/db.config';
 import { TRPCError } from '@trpc/server';
 
 @Injectable()

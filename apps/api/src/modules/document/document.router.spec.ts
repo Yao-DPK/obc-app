@@ -12,8 +12,8 @@ jest.mock('../../database/config/db.config', () => ({
 import { Test, TestingModule } from '@nestjs/testing';
 import { DocumentRouter } from './document.router';
 import { DocumentService } from './document.service';
-import { documents } from '../../database/schema';
-import { db, eq } from '../../database/config/db.config';
+import { documents } from '@database/schema';
+import { db, eq } from '@database/config/db.config';
 
 const mockDocumentService = {
   create: jest.fn(),
