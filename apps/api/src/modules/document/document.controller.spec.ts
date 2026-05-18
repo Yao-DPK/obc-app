@@ -1,7 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { DocumentController } from './document.controller';
 import { DocumentService } from './document.service';
-import { db } from 'src/database/config/db.config';
 
 jest.mock('../../database/config/db.config', () => ({
   db: {

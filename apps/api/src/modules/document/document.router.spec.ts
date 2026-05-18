@@ -1,5 +1,5 @@
 // apps/api/src/modules/documents/document.router.spec.ts
-jest.mock('../../database/config/db.config', () => ({
+jest.mock('src/database/db', () => ({
   db: {
     select: jest.fn(),
     insert: jest.fn(),

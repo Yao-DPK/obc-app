@@ -1,7 +1,7 @@
 import { Injectable, NestMiddleware } from '@nestjs/common';
 import { Request, Response, NextFunction } from 'express';
-import { db } from 'src/database/config/db.config';
-import { auditLogs } from 'src/database/config/db.config';
+import { db } from 'src/database/db';
+import { auditLogs } from 'src/database/db';
 
 @Injectable()
 export class AuditMiddleware implements NestMiddleware {

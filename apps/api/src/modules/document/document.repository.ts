@@ -1,5 +1,5 @@
 // document.repository.ts
-import { db } from 'src/database/config/db.config';
+import { db } from 'src/database/db';
 import { documents } from 'src/database/schema';
 import { eq, and } from 'drizzle-orm';
 
